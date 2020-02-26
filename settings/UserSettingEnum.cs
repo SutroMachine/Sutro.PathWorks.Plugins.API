@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace gs.interfaces {
+namespace Sutro.PathWorks.Plugins.API {
     public class UserSettingEnum<TSettings> : UserSetting<TSettings, string>
     {
         private readonly Func<IList<Tuple<int, string, string>>> tupleF;

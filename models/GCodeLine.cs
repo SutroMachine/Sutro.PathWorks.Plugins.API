@@ -1,4 +1,4 @@
-﻿namespace gs
+﻿namespace Sutro.PathWorks.Plugins.API
 {
     public struct GCodeParam
 	{

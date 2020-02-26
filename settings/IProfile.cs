@@ -1,4 +1,4 @@
-﻿namespace gs.interfaces
+﻿namespace Sutro.PathWorks.Plugins.API
 {
     public interface IProfile
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace gs.interfaces
+namespace Sutro.PathWorks.Plugins.API
 {
     public interface IVisualizer
     {

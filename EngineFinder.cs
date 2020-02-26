@@ -5,7 +5,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Reflection;
 
-namespace gs.interfaces
+namespace Sutro.PathWorks.Plugins.API
 {
     public class EngineFinder
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace gs
+namespace Sutro.PathWorks.Plugins.API
 {
     public interface IGenerator
     {

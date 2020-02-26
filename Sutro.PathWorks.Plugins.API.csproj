@@ -1,13 +1,50 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>Sutro.PathWorks.Plugins.API</PackageId>
+    <Version>1.0.1</Version>
+    <PackageDescription>Interface definition to create CAM plugins for Sutro PathWorks.</PackageDescription>
+    <RepositoryUrl>https://github.com/SutroMachine/Sutro.PathWorks.Plugins.API</RepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>
+      $(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb
+    </AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Sutro.PathWorks.Plugins.API</RootNamespace>
+    <Authors>Greg Meess</Authors>
+    <Company>Sutro Machine, Inc.</Company>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Description>Interface definition to create additive toolpathing plugins for the Sutro PathWorks desktop application.</Description>
+    <Copyright>Copyright © Greg Meess/Sutro Machine, Inc. 2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Sutro.geometry3Sharp" Version="1.0.10" />
     <PackageReference Include="System.ComponentModel.Composition" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

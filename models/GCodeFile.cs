@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace gs
+namespace Sutro.PathWorks.Plugins.API
 {
     public class GCodeFile
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 
-namespace gs.interfaces
+namespace Sutro.PathWorks.Plugins.API
 {
     /// <summary>
     /// Provides a common interface to raw settings. 

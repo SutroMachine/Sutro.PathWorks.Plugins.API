@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace gs.interfaces
+namespace Sutro.PathWorks.Plugins.API
 {
     public interface IEngineData
     {
