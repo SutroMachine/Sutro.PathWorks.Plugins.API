@@ -5,14 +5,14 @@ namespace Sutro.PathWorks.Plugins.API
     public class UserSettingInt<TSettings> : UserSetting<TSettings, int>
     {
         public UserSettingInt(
+            string id,
             Func<string> nameF,
             Func<string> descriptionF,
             UserSettingGroup group,
             Func<TSettings, int> loadF,
             Action<TSettings, int> applyF,
-            Func<int, ValidationResult> validateF = null) : base(nameF, descriptionF, group, loadF, applyF, validateF)
+            Func<int, ValidationResult> validateF = null) : base(id, nameF, descriptionF, group, loadF, applyF, validateF)
         {
-
         }
     }
 

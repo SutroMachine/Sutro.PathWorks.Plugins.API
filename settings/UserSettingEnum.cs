@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sutro.PathWorks.Plugins.API {
+namespace Sutro.PathWorks.Plugins.API
+{
     public class UserSettingEnum<TSettings> : UserSetting<TSettings, string>
     {
         private readonly Func<IList<Tuple<int, string, string>>> tupleF;
@@ -10,22 +11,27 @@ namespace Sutro.PathWorks.Plugins.API {
 
         /// <param name="tupleF">Tuples of (enum value, name, description), in that order.</param>
         public UserSettingEnum(
+            string id,
             Func<string> nameF,
             Func<string> descriptionF,
             UserSettingGroup group,
             Func<TSettings, string> loadF,
             Action<TSettings, string> applyF,
-            Func<IList<Tuple<int, string, string>>> tupleF = null) : base(nameF, descriptionF, group, loadF, applyF, UserSettingEnumValidations.ValidateContains(tupleF, ValidationResult.Level.Error))
+            Func<IList<Tuple<int, string, string>>> tupleF = null) : base(id, nameF, descriptionF, group, loadF, applyF, UserSettingEnumValidations.ValidateContains(tupleF, ValidationResult.Level.Error))
         {
             this.tupleF = tupleF;
         }
     }
 
-    public static class UserSettingEnumValidations {
-        public static Func<string, ValidationResult> ValidateContains(Func<IList<Tuple<int, string, string>>> tupleF, ValidationResult.Level level) {
-            return (val) => {
+    public static class UserSettingEnumValidations
+    {
+        public static Func<string, ValidationResult> ValidateContains(Func<IList<Tuple<int, string, string>>> tupleF, ValidationResult.Level level)
+        {
+            return (val) =>
+            {
                 var tuples = tupleF();
-                foreach (var tuple in tuples) {
+                foreach (var tuple in tuples)
+                {
                     if (tuple.Item2 == val)
                         return new ValidationResult();
                 }
