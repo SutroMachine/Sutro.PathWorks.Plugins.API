@@ -8,7 +8,7 @@ namespace Sutro.PathWorks.Plugins.API
     {
         void BeginGCodeLineStream();
 
-        void ProcessGCodeLine(GCodeLine line);
+        void ProcessGCodeLine(string line);
 
         void EndGCodeLineStream();
 
@@ -19,7 +19,7 @@ namespace Sutro.PathWorks.Plugins.API
         event Action<double, int> OnNewPlane;
 
         string Name { get; }
-        Dictionary<int, FillType> FillTypes { get; }
+        Dictionary<string, FillType> FillTypes { get; }
 
         IVisualizerCustomDataDetails CustomDataDetails0 { get; }
         IVisualizerCustomDataDetails CustomDataDetails1 { get; }

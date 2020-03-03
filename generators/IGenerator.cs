@@ -7,23 +7,15 @@ namespace Sutro.PathWorks.Plugins.API
 {
     public interface IGenerator
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parts"></param>
-        /// <param name="globalSettings"></param>
-        /// <param name="gcodeLineReadyF"></param>
-        /// <param name="layerReadyF"></param>
-        /// <returns></returns>
-        GCodeFile GenerateGCode(IList<Tuple<DMesh3, object>> parts,
+        IEnumerable<string> GenerateGCode(IList<Tuple<DMesh3, object>> parts,
                                 object globalSettings,
                                 out IEnumerable<string> generationReport,
-                                Action<GCodeLine> gcodeLineReadyF = null,
+                                Action<string> gcodeLineReadyF = null,
                                 Action<string> progressMessageF = null);
 
-        void SaveGCode(TextWriter output, GCodeFile file);
+        void SaveGCode(TextWriter output, IEnumerable<string> file);
 
-        GCodeFile LoadGCode(TextReader input);
+        IEnumerable<string> LoadGCode(TextReader input);
 
         bool AcceptsParts { get; }
         bool AcceptsPartSettings { get; }
@@ -33,18 +25,10 @@ namespace Sutro.PathWorks.Plugins.API
 
     public interface IGenerator<TSettings> : IGenerator
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parts"></param>
-        /// <param name="globalSettings"></param>
-        /// <param name="gcodeLineReadyF"></param>
-        /// <param name="layerReadyF"></param>
-        /// <returns></returns>
-        GCodeFile GenerateGCode(IList<Tuple<DMesh3, TSettings>> parts,
+        IEnumerable<string> GenerateGCode(IList<Tuple<DMesh3, TSettings>> parts,
                                 TSettings globalSettings,
                                 out IEnumerable<string> generationReport,
-                                Action<GCodeLine> gcodeLineReadyF = null,
+                                Action<string> gcodeLineReadyF = null,
                                 Action<string> progressMessageF = null);
     }
 }
