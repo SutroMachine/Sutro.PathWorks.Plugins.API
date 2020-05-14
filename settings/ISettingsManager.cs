@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Sutro.Core.Models;
+using Sutro.Core.Models.Profiles;
+using System.Collections.Generic;
 
 namespace Sutro.PathWorks.Plugins.API
 {
@@ -17,7 +19,7 @@ namespace Sutro.PathWorks.Plugins.API
     }
 
 
-    public interface ISettingsManager<TSettings> : ISettingsManager where TSettings : IProfile
+    public interface ISettingsManager<TSettings> : ISettingsManager where TSettings : IMachineProfile, IMaterialProfile, IPartProfile
     {
         new List<TSettings> FactorySettings { get; }
 
