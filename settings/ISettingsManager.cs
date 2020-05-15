@@ -2,7 +2,7 @@
 using Sutro.Core.Models.Profiles;
 using System.Collections.Generic;
 
-namespace Sutro.PathWorks.Plugins.API
+namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public interface ISettingsManager
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sutro.PathWorks.Plugins.API
+namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public class UserSettingEnum<TSettings> : UserSetting<TSettings, string>
     {

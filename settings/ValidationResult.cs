@@ -1,4 +1,4 @@
-﻿namespace Sutro.PathWorks.Plugins.API
+﻿namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public struct ValidationResult
     {

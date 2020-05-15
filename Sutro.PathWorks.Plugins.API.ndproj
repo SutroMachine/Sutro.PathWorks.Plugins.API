@@ -1006,7 +1006,7 @@ select new {
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>Avoid methods with too many parameters</Name>
 // <Id>ND1004:AvoidMethodsWithTooManyParameters</Id>
 warnif count > 0 from m in JustMyCode.Methods where 
-  m.NbParameters >= 7 &&
+  m.NbParameters >= 8 &&
 
   // Don't match a method that overrides a third-party method with many parameters
   !m.OverriddensBase.Any(mo => mo.IsThirdParty) &&
@@ -4600,7 +4600,7 @@ select new {
 //</HowToFix>]]></Query>
     </Group>
     <Group Name="API Breaking Changes" Active="True" ShownInReport="True">
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Types</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Types</Name>
 // <Id>ND1500:APIBreakingChangesTypes</Id>
 
 warnif count > 0 from t in codeBase.OlderVersion().Application.Types
@@ -4646,7 +4646,7 @@ select new {
 // because an API Breaking change can provoque significant
 // friction with consumers of the API.
 //</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Methods</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Methods</Name>
 // <Id>ND1501:APIBreakingChangesMethods</Id>
 
 warnif count > 0 from m in codeBase.OlderVersion().Application.Methods
@@ -4774,7 +4774,7 @@ select new {
 // because an API Breaking change can provoque significant
 // friction with consumers of the API.
 //</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Interfaces and Abstract Classes</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Interfaces and Abstract Classes</Name>
 // <Id>ND1503:APIBreakingChangesInterfacesAndAbstractClasses</Id>
 
 warnif count > 0 from tNewer in Application.Types where 

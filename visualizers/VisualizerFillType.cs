@@ -1,6 +1,6 @@
 ﻿using g3;
 
-namespace Sutro.PathWorks.Plugins.API
+namespace Sutro.PathWorks.Plugins.API.Visualizers
 {
     public struct VisualizerFillType
     {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.Diagnostics.CodeAnalysis;
+using System.Dynamic;
 using System.IO;
 using System.Reflection;
 
@@ -21,27 +23,7 @@ namespace Sutro.PathWorks.Plugins.API
         public EngineFinder(string path, Action<string> logger = null)
         {
             // An aggregate catalog that combines multiple catalogs
-            var catalog = new AggregateCatalog();
-
-            // This iteration is required because of the bundling done by Fody.Costura
-            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                catalog.Catalogs.Add(new AssemblyCatalog(asm));
-            }
-
-            if (!Directory.Exists(path))
-            {
-                logger?.Invoke("Invalid path passed to EngineFinder constructor");
-                logger?.Invoke(Path.GetFullPath(path));
-                return;
-            }
-
-            catalog.Catalogs.Add(new DirectoryCatalog(path));
-            foreach (var p in Directory.EnumerateDirectories(path, "*", SearchOption.AllDirectories))
-            {
-                // Add catalogs from file path
-                catalog.Catalogs.Add(new DirectoryCatalog(p));
-            }
+            var catalog = CreateCatalog(path, logger);
 
             // Create the CompositionContainer with the parts in the catalog
             container = new CompositionContainer(catalog);
@@ -82,6 +64,33 @@ namespace Sutro.PathWorks.Plugins.API
                     logger?.Invoke("Found engine: " + e.Metadata.Name);
                 }
             }
+        }
+
+        private AggregateCatalog CreateCatalog(string path, Action<string> logger)
+        {
+            var catalog = new AggregateCatalog();
+
+            // This iteration is required because of the bundling done by Fody.Costura
+            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                catalog.Catalogs.Add(new AssemblyCatalog(asm));
+            }
+
+            // Confirm file path exists
+            if (!Directory.Exists(path))
+            {
+                logger?.Invoke("Invalid path passed to EngineFinder constructor");
+                logger?.Invoke(Path.GetFullPath(path));
+                return null;
+            }
+
+            // Add catalogs from file path
+            catalog.Catalogs.Add(new DirectoryCatalog(path));
+            foreach (var p in Directory.EnumerateDirectories(path, "*", SearchOption.AllDirectories))
+            {
+                catalog.Catalogs.Add(new DirectoryCatalog(p));
+            }
+            return catalog;
         }
     }
 }

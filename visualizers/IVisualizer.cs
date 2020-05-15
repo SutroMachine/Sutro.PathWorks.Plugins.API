@@ -3,7 +3,7 @@ using Sutro.Core.Models.GCode;
 using System;
 using System.Collections.Generic;
 
-namespace Sutro.PathWorks.Plugins.API
+namespace Sutro.PathWorks.Plugins.API.Visualizers
 {
     public interface IVisualizer
     {
