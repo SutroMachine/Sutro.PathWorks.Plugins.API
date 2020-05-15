@@ -1477,11 +1477,11 @@ warnif count > 0 from m in JustMyCode.Methods where
  
 // Low Quality methods// Metrics' definitions
 (  m.NbLinesOfCode > 30 ||          // https://www.ndepend.com/docs/code-metrics#NbLinesOfCode
-   m.NbILInstructions > 200 ||      // https://www.ndepend.com/docs/code-metrics#NbILInstructions
+   m.NbILInstructions > 202 ||      // https://www.ndepend.com/docs/code-metrics#NbILInstructions
    m.CyclomaticComplexity > 20 ||   // https://www.ndepend.com/docs/code-metrics#CC
    m.ILCyclomaticComplexity > 50 || // https://www.ndepend.com/docs/code-metrics#ILCC
-   m.ILNestingDepth > 4 ||          // https://www.ndepend.com/docs/code-metrics#ILNestingDepth
-   m.NbParameters > 5 ||            // https://www.ndepend.com/docs/code-metrics#NbParameters
+   m.ILNestingDepth > 5 ||          // https://www.ndepend.com/docs/code-metrics#ILNestingDepth
+   m.NbParameters > 7 ||            // https://www.ndepend.com/docs/code-metrics#NbParameters
    m.NbVariables > 8 ||             // https://www.ndepend.com/docs/code-metrics#NbVariables
    m.NbOverloads > 6 )
 select new { 
@@ -2386,7 +2386,7 @@ let testAttributes = Types
 
 from t in JustMyCode.Types
 where  t.IsClass &&
-    //!t.IsPublic &&   // if you are developing a framework, 
+      !t.IsPublic &&   // if you are developing a framework, 
                        // you might not want to match public classes
       !t.IsStatic && 
       !t.IsAbstract &&
