@@ -22,4 +22,7 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD80B1E7-DA9F-44A5-AE4E-F979AC9999D4}
 	EndGlobalSection
+	GlobalSection(NDepend) = preSolution
+		Project = ".\Sutro.PathWorks.Plugins.API.ndproj"
+	EndGlobalSection
 EndGlobal
