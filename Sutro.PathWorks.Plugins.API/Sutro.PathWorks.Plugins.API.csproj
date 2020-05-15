@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Sutro.PathWorks.Plugins.API</PackageId>
-    <Version>4.0</Version>
+    <Version>5.0</Version>
     <PackageDescription>Interface definition to create CAM plugins for Sutro PathWorks.</PackageDescription>
     <RepositoryUrl>https://github.com/SutroMachine/Sutro.PathWorks.Plugins.API</RepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="LICENSE.txt">
+    <None Include="..\LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
@@ -46,10 +46,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Sutro.Core\Sutro.Core\Sutro.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,18 +1,16 @@
 ﻿using System;
 
-namespace Sutro.PathWorks.Plugins.API
+namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public class UserSettingGroup
     {
-        private readonly Func<string> NameF;
+        private readonly Func<string> nameF;
 
-        public string Name => NameF();
+        public string Name => nameF();
 
         public UserSettingGroup(Func<string> nameF, Func<string> descriptionF = null)
         {
-            NameF = nameF;
+            this.nameF = nameF;
         }
-
-
     }
 }

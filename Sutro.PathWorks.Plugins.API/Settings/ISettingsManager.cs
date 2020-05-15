@@ -2,7 +2,7 @@
 using Sutro.Core.Models.Profiles;
 using System.Collections.Generic;
 
-namespace Sutro.PathWorks.Plugins.API
+namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public interface ISettingsManager
     {
@@ -11,6 +11,7 @@ namespace Sutro.PathWorks.Plugins.API
         IProfile FactorySettingByManufacturerAndModel(string manufacturer, string model);
 
         void ApplyJSON(IProfile settings, string json);
+
         void ApplyKeyValuePair(IProfile settings, string keyValue);
 
         IUserSettingCollection MachineUserSettings { get; }
@@ -18,15 +19,14 @@ namespace Sutro.PathWorks.Plugins.API
         IUserSettingCollection PrintUserSettings { get; }
     }
 
-
     public interface ISettingsManager<TSettings> : ISettingsManager where TSettings : IMachineProfile, IMaterialProfile, IPartProfile
     {
         new List<TSettings> FactorySettings { get; }
 
         new TSettings FactorySettingByManufacturerAndModel(string manufacturer, string model);
 
-
         void ApplyJSON(TSettings settings, string json);
+
         void ApplyKeyValuePair(TSettings settings, string keyValue);
 
         new IUserSettingCollection<TSettings> MachineUserSettings { get; }
