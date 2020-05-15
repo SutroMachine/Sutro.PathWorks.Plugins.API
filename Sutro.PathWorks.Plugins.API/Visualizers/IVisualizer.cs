@@ -23,6 +23,6 @@ namespace Sutro.PathWorks.Plugins.API.Visualizers
 
         Dictionary<int, VisualizerFillType> FillTypes { get; }
 
-        VisualizerCustomDataDetails CustomDataDetails { get; }
+        VisualizerCustomDataDetailsCollection CustomDataDetails { get; }
     }
 }
