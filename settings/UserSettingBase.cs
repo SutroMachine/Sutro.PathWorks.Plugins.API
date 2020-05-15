@@ -2,16 +2,16 @@
 
 namespace Sutro.PathWorks.Plugins.API.Settings
 {
-    public abstract class UserSetting
+    public abstract class UserSettingBase
     {
-        private readonly Func<string> NameF;
-        private readonly Func<string> DescriptionF;
+        private readonly Func<string> nameF;
+        private readonly Func<string> descriptionF;
 
-        public string Name => NameF();
+        public string Name => nameF();
         public string Id { get; }
-        public string Description => DescriptionF();
+        public string Description => descriptionF();
 
-        public readonly UserSettingGroup Group;
+        public UserSettingGroup Group { get; }
 
         public abstract void LoadFromRaw(object settings);
 
@@ -25,24 +25,24 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
         public abstract ValidationResult Validate(object value);
 
-        public UserSetting(string id, Func<string> nameF, Func<string> descriptionF = null, UserSettingGroup group = null)
+        protected UserSettingBase(string id, Func<string> nameF, Func<string> descriptionF = null, UserSettingGroup group = null)
         {
-            NameF = nameF;
-            DescriptionF = descriptionF;
+            this.nameF = nameF;
+            this.descriptionF = descriptionF;
             Group = group;
             Id = id;
         }
     }
 
-    public abstract class UserSetting<TSettings> : UserSetting
+    public abstract class UserSettingBase<TSettings> : UserSettingBase
     {
         // Can be used to hide settings in inherited UserSettingsCollection classes
         public bool Hidden { get; set; } = false;
 
-        public UserSetting(string id,
-                           Func<string> nameF,
-                           Func<string> descriptionF = null,
-                           UserSettingGroup group = null) : base(id, nameF, descriptionF, group)
+        protected UserSettingBase(string id,
+            Func<string> nameF,
+            Func<string> descriptionF = null,
+            UserSettingGroup group = null) : base(id, nameF, descriptionF, group)
         {
         }
 
@@ -75,7 +75,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
         public abstract void SetToRaw(TSettings settings, object value);
     }
 
-    public class UserSetting<TSettings, TValue> : UserSetting<TSettings>
+    public class UserSetting<TSettings, TValue> : UserSettingBase<TSettings>
     {
         public TValue Value { get; set; }
 
@@ -144,7 +144,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
                     return validateF(tValue);
                 return new ValidationResult();
             }
-            return new ValidationResult(ValidationResult.Level.Error, "Invalid cast");
+            return new ValidationResult(ValidationResultLevel.Error, "Invalid cast");
         }
     }
 }

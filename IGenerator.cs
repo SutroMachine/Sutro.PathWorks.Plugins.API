@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Sutro.PathWorks.Plugins.API.Generators
+namespace Sutro.PathWorks.Plugins.API
 {
     public interface IGenerator
     {

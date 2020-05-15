@@ -1,4 +1,5 @@
 ﻿using g3;
+using System;
 
 namespace Sutro.PathWorks.Plugins.API.Visualizers
 {
@@ -19,6 +20,25 @@ namespace Sutro.PathWorks.Plugins.API.Visualizers
             Color = color;
             Brightness = brightness;
             CustomColorData = colorData;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is ToolpathPreviewVertex o))
+                return false;
+
+            return
+                CustomColorData.Equals(o.CustomColorData) &&
+                Point.Equals(o.Point) &&
+                Color.Equals(o.Color) &&
+                FillType.Equals(o.FillType) &&
+                LayerIndex.Equals(o.LayerIndex) &&
+                Brightness.Equals(o.Brightness);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(CustomColorData, Point, Color, FillType, LayerIndex, Brightness);
         }
     }
 }

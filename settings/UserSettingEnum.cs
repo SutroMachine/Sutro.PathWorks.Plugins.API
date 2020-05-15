@@ -17,7 +17,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
             UserSettingGroup group,
             Func<TSettings, string> loadF,
             Action<TSettings, string> applyF,
-            Func<IList<Tuple<int, string, string>>> tupleF = null) : base(id, nameF, descriptionF, group, loadF, applyF, UserSettingEnumValidations.ValidateContains(tupleF, ValidationResult.Level.Error))
+            Func<IList<Tuple<int, string, string>>> tupleF = null) : base(id, nameF, descriptionF, group, loadF, applyF, UserSettingEnumValidations.ValidateContains(tupleF, ValidationResultLevel.Error))
         {
             this.tupleF = tupleF;
         }
@@ -25,7 +25,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
     public static class UserSettingEnumValidations
     {
-        public static Func<string, ValidationResult> ValidateContains(Func<IList<Tuple<int, string, string>>> tupleF, ValidationResult.Level level)
+        public static Func<string, ValidationResult> ValidateContains(Func<IList<Tuple<int, string, string>>> tupleF, ValidationResultLevel level)
         {
             return (val) =>
             {

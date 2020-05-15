@@ -18,7 +18,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
     public static class UserSettingNumericValidations<T> where T : IComparable<T>
     {
-        public static Func<T, ValidationResult> ValidateMin(T min, ValidationResult.Level level)
+        public static Func<T, ValidationResult> ValidateMin(T min, ValidationResultLevel level)
         {
             return (val) =>
             {
@@ -28,7 +28,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
             };
         }
 
-        public static Func<T, ValidationResult> ValidateMax(T max, ValidationResult.Level level)
+        public static Func<T, ValidationResult> ValidateMax(T max, ValidationResultLevel level)
         {
             return (val) =>
             {
@@ -38,12 +38,12 @@ namespace Sutro.PathWorks.Plugins.API.Settings
             };
         }
 
-        public static Func<T, ValidationResult> ValidateMinMax(T min, T max, ValidationResult.Level level)
+        public static Func<T, ValidationResult> ValidateMinMax(T min, T max, ValidationResultLevel level)
         {
             return (val) =>
             {
                 var result = ValidateMin(min, level).Invoke(val);
-                if (result.Severity == ValidationResult.Level.None)
+                if (result.Severity == ValidationResultLevel.Message)
                     result = ValidateMax(max, level).Invoke(val);
                 return result;
             };

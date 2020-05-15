@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-using System.Diagnostics.CodeAnalysis;
-using System.Dynamic;
 using System.IO;
 using System.Reflection;
 
-namespace Sutro.PathWorks.Plugins.API
+namespace Sutro.PathWorks.Plugins.API.Engines
 {
     public class EngineFinder
     {
         #pragma warning disable CS0649
         [ImportMany(typeof(IEngine))]
-        private IEnumerable<Lazy<IEngine, IEngineData>> engines;
+        private readonly IEnumerable<Lazy<IEngine, IEngineData>> engines;
         #pragma warning restore CS0649
 
-        private CompositionContainer container;
+        private readonly CompositionContainer container;
 
-        public Dictionary<string, Lazy<IEngine, IEngineData>> EngineDictionary { get; private set; }
+        public Dictionary<string, Lazy<IEngine, IEngineData>> Engines { get; private set; }
 
         public EngineFinder(string path, Action<string> logger = null)
         {
@@ -26,6 +24,36 @@ namespace Sutro.PathWorks.Plugins.API
             var catalog = CreateCatalog(path, logger);
 
             // Create the CompositionContainer with the parts in the catalog
+            if (!ConstructContainer(catalog, logger, out container))
+                return;
+
+            Engines = CreateEngineDictionary(container, logger);
+
+        }
+
+        private Dictionary<string, Lazy<IEngine, IEngineData>> CreateEngineDictionary(CompositionContainer container, Action<string> logger)
+        {
+            var result = new Dictionary<string, Lazy<IEngine, IEngineData>>();
+            if (engines == null)
+            {
+                logger?.Invoke("No engines found");
+            }
+            else
+            {
+                foreach (var e in engines)
+                {
+                    if (!result.ContainsKey(e.Metadata.Name))
+                    {
+                        result.Add(e.Metadata.Name.ToLower(), e);
+                        logger?.Invoke("Found engine: " + e.Metadata.Name);
+                    }
+                }
+            }
+            return result;
+        }
+
+        private bool ConstructContainer(AggregateCatalog catalog, Action<string> logger, out CompositionContainer container)
+        {
             container = new CompositionContainer(catalog);
 
             // Fill the imports of this object
@@ -39,34 +67,18 @@ namespace Sutro.PathWorks.Plugins.API
                 foreach (var a in e.LoaderExceptions)
                 {
                     logger?.Invoke(a.ToString());
-                    return;
+                    return false;
                 }
             }
             catch (CompositionException e)
             {
                 logger?.Invoke(e.ToString());
-                return;
+                return false;
             }
-
-            EngineDictionary = new Dictionary<string, Lazy<IEngine, IEngineData>>();
-
-            if (engines == null)
-            {
-                logger?.Invoke("No engines found");
-                return;
-            }
-
-            foreach (var e in engines)
-            {
-                if (!EngineDictionary.ContainsKey(e.Metadata.Name))
-                {
-                    EngineDictionary.Add(e.Metadata.Name.ToLower(), e);
-                    logger?.Invoke("Found engine: " + e.Metadata.Name);
-                }
-            }
+            return true;
         }
 
-        private AggregateCatalog CreateCatalog(string path, Action<string> logger)
+        private static AggregateCatalog CreateCatalog(string path, Action<string> logger)
         {
             var catalog = new AggregateCatalog();
 

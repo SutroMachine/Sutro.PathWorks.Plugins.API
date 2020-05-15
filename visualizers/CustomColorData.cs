@@ -1,4 +1,6 @@
-﻿namespace Sutro.PathWorks.Plugins.API.Visualizers
+﻿using System;
+
+namespace Sutro.PathWorks.Plugins.API.Visualizers
 {
     public readonly struct CustomColorData
     {
@@ -19,6 +21,25 @@
             Field3 = field3;
             Field4 = field4;
             Field5 = field5;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CustomColorData o))
+                return false;
+ 
+            return
+                Field0 == o.Field0 &&
+                Field1 == o.Field1 &&
+                Field2 == o.Field2 &&
+                Field3 == o.Field3 &&
+                Field4 == o.Field4 &&
+                Field5 == o.Field5;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Field0, Field1, Field2, Field3, Field4, Field5);
         }
     }
 }
