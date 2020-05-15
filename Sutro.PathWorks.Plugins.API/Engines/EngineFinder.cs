@@ -9,10 +9,12 @@ namespace Sutro.PathWorks.Plugins.API.Engines
 {
     public class EngineFinder
     {
-        #pragma warning disable CS0649
+#pragma warning disable CS0649
+
         [ImportMany(typeof(IEngine))]
         private readonly IEnumerable<Lazy<IEngine, IEngineData>> engines;
-        #pragma warning restore CS0649
+
+#pragma warning restore CS0649
 
         private readonly CompositionContainer container;
 
@@ -28,7 +30,6 @@ namespace Sutro.PathWorks.Plugins.API.Engines
                 return;
 
             Engines = CreateEngineDictionary(container, logger);
-
         }
 
         private Dictionary<string, Lazy<IEngine, IEngineData>> CreateEngineDictionary(CompositionContainer container, Action<string> logger)

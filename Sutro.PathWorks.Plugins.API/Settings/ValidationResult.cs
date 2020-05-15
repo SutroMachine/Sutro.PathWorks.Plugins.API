@@ -10,6 +10,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
             Message = message;
             SettingName = settingName;
         }
+
         public ValidationResultLevel Severity { get; }
         public string SettingName { get; }
         public string Message { get; }

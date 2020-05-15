@@ -12,7 +12,5 @@ namespace Sutro.PathWorks.Plugins.API.Settings
         {
             this.nameF = nameF;
         }
-
-
     }
 }

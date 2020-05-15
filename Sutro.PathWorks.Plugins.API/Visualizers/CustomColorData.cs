@@ -12,7 +12,7 @@ namespace Sutro.PathWorks.Plugins.API.Visualizers
         public double? Field5 { get; }
 
         public CustomColorData(
-            double? field0 = null, double? field1 = null, double? field2 = null, 
+            double? field0 = null, double? field1 = null, double? field2 = null,
             double? field3 = null, double? field4 = null, double? field5 = null)
         {
             Field0 = field0;
@@ -27,7 +27,7 @@ namespace Sutro.PathWorks.Plugins.API.Visualizers
         {
             if (!(obj is CustomColorData o))
                 return false;
- 
+
             return
                 Field0 == o.Field0 &&
                 Field1 == o.Field1 &&
