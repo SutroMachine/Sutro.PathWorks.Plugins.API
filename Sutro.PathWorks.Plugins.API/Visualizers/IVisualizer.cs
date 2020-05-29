@@ -17,6 +17,8 @@ namespace Sutro.PathWorks.Plugins.API.Visualizers
 
         event Action<List<Vector3d>, int> OnLineGenerated;
 
+        event Action<ToolpathPreviewVertex[], int> OnPointsGenerated;
+
         event Action<double, int> OnNewPlane;
 
         string Name { get; }
