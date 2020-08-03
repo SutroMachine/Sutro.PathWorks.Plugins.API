@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Sutro.PathWorks.Plugins.API</PackageId>
-    <Version>6.1</Version>
+    <Version>6.1.1-netcore</Version>
     <PackageDescription>Interface definition to create CAM plugins for Sutro PathWorks.</PackageDescription>
     <RepositoryUrl>https://github.com/SutroMachine/Sutro.PathWorks.Plugins.API</RepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -18,7 +18,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Sutro.PathWorks.Plugins.API</RootNamespace>
     <Authors>Greg Meess</Authors>
     <Company>Sutro Machine, Inc.</Company>
@@ -29,8 +29,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sutro.Core.Models" Version="1.0.3" />
-    <PackageReference Include="Sutro.geometry3Sharp" Version="1.0.11" />
+    <PackageReference Include="Sutro.Core.Models" Version="1.0.5" />
+    <PackageReference Include="Sutro.geometry3Sharp" Version="1.0.15" />
     <PackageReference Include="System.ComponentModel.Composition" Version="4.7.0" />
   </ItemGroup>
 
