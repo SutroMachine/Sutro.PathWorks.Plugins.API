@@ -29,7 +29,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
         TSettings DeserializeJSON(string json);
 
-        string SerializeJSON(string TSettings);
+        string SerializeJSON(TSettings settings);
 
         void ApplyKeyValuePair(TSettings settings, string keyValue);
 
