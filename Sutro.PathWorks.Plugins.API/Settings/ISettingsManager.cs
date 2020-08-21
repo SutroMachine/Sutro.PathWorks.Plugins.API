@@ -12,6 +12,10 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
         void ApplyJSON(IProfile settings, string json);
 
+        IProfile DeserializeJSON(string json);
+
+        string SerializeJSON(IProfile settings);
+
         void ApplyKeyValuePair(IProfile settings, string keyValue);
 
         IUserSettingCollection MachineUserSettings { get; }
@@ -27,7 +31,7 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
         void ApplyJSON(TSettings settings, string json);
 
-        TSettings DeserializeJSON(string json);
+        new TSettings DeserializeJSON(string json);
 
         string SerializeJSON(TSettings settings);
 
