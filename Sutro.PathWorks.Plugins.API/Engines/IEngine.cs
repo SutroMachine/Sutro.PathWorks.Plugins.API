@@ -14,7 +14,7 @@ namespace Sutro.PathWorks.Plugins.API.Engines
         ISettingsManager SettingsManager { get; }
         List<IVisualizer> Visualizers { get; }
 
-        List<string> FileExtensions => new List<string>() { "gcode" };
+        List<string> FileExtensions { get; }
     }
 
     public interface IEngine<TSettings> : IEngine where TSettings : IProfile
