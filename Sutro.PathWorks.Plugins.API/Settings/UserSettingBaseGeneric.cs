@@ -2,7 +2,7 @@
 
 namespace Sutro.PathWorks.Plugins.API.Settings
 {
-    public abstract class UserSettingBase<TSettings> : UserSettingBase
+    public abstract class UserSettingBase<TProfile> : UserSettingBase
     {
         // Can be used to hide settings in inherited UserSettingsCollection classes
         public bool Hidden { get; set; } = false;
@@ -16,30 +16,30 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
         public override void LoadFromRaw(object settings)
         {
-            LoadFromRaw((TSettings)settings);
+            LoadFromRaw((TProfile)settings);
         }
 
         public override void ApplyToRaw(object settings)
         {
-            ApplyToRaw((TSettings)settings);
+            ApplyToRaw((TProfile)settings);
         }
 
         public override object GetFromRaw(object settings)
         {
-            return GetFromRaw((TSettings)settings);
+            return GetFromRaw((TProfile)settings);
         }
 
         public override void SetToRaw(object settings, object value)
         {
-            SetToRaw((TSettings)settings, value);
+            SetToRaw((TProfile)settings, value);
         }
 
-        public abstract void LoadFromRaw(TSettings settings);
+        public abstract void LoadFromRaw(TProfile settings);
 
-        public abstract void ApplyToRaw(TSettings settings);
+        public abstract void ApplyToRaw(TProfile settings);
 
-        public abstract object GetFromRaw(TSettings settings);
+        public abstract object GetFromRaw(TProfile settings);
 
-        public abstract void SetToRaw(TSettings settings, object value);
+        public abstract void SetToRaw(TProfile settings, object value);
     }
 }

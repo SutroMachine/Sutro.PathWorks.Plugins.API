@@ -28,16 +28,16 @@ namespace Sutro.PathWorks.Plugins.API.Settings
         void SetCulture(CultureInfo cultureInfo);
     }
 
-    public interface IUserSettingCollection<TSettings> : IUserSettingCollection
+    public interface IUserSettingCollection<TProfile> : IUserSettingCollection
     {
-        new IEnumerable<UserSettingBase<TSettings>> Settings();
+        new IEnumerable<UserSettingBase<TProfile>> Settings();
 
-        List<ValidationResult> Validate(TSettings rawSettings);
+        List<ValidationResult> Validate(TProfile rawSettings);
 
-        void LoadFromRaw(TSettings rawSettings,
-                         IEnumerable<UserSettingBase<TSettings>> userSettings);
+        void LoadFromRaw(TProfile rawSettings,
+                         IEnumerable<UserSettingBase<TProfile>> userSettings);
 
-        void ApplyToRaw(TSettings rawSettings,
-                        IEnumerable<UserSettingBase<TSettings>> userSettings);
+        void ApplyToRaw(TProfile rawSettings,
+                        IEnumerable<UserSettingBase<TProfile>> userSettings);
     }
 }

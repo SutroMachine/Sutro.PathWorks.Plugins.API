@@ -1,46 +1,26 @@
-﻿using Sutro.Core.Models;
-using Sutro.Core.Models.Profiles;
-using System.Collections.Generic;
+﻿using Sutro.Core.Models.Profiles;
 
 namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public interface ISettingsManager
     {
-        List<IProfile> FactorySettings { get; }
+        object CreateSettingsInstance();
 
-        IProfile FactorySettingByManufacturerAndModel(string manufacturer, string model);
+        IProfileManager<object, IMachineProfile<object>> MachineProfileManager { get; }
 
-        void ApplyJSON(IProfile settings, string json);
+        IProfileManager<object, IProfile<object>> MaterialProfileManager { get; }
 
-        IProfile DeserializeJSON(string json);
-
-        string SerializeJSON(IProfile settings);
-
-        void ApplyKeyValuePair(IProfile settings, string keyValue);
-
-        IUserSettingCollection MachineUserSettings { get; }
-        IUserSettingCollection MaterialUserSettings { get; }
-        IUserSettingCollection PrintUserSettings { get; }
+        IProfileManager<object, IProfile<object>> PartProfileManager { get; }
     }
 
-    public interface ISettingsManager<TSettings> : ISettingsManager where TSettings : IMachineProfile, IMaterialProfile, IPartProfile
+    public interface ISettingsManager<TSettings> : ISettingsManager
     {
-        new List<TSettings> FactorySettings { get; }
+        new TSettings CreateSettingsInstance();
 
-        new TSettings FactorySettingByManufacturerAndModel(string manufacturer, string model);
+        new IProfileManager<TSettings, IMachineProfile<TSettings>> MachineProfileManager { get; }
 
-        void ApplyJSON(TSettings settings, string json);
+        new IProfileManager<TSettings, IProfile<TSettings>> MaterialProfileManager { get; }
 
-        new TSettings DeserializeJSON(string json);
-
-        string SerializeJSON(TSettings settings);
-
-        void ApplyKeyValuePair(TSettings settings, string keyValue);
-
-        new IUserSettingCollection<TSettings> MachineUserSettings { get; }
-
-        new IUserSettingCollection<TSettings> MaterialUserSettings { get; }
-
-        new IUserSettingCollection<TSettings> PrintUserSettings { get; }
+        new IProfileManager<TSettings, IProfile<TSettings>> PartProfileManager { get; }
     }
 }

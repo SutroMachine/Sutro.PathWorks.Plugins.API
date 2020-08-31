@@ -17,7 +17,7 @@ namespace Sutro.PathWorks.Plugins.API.Engines
         List<string> FileExtensions { get; }
     }
 
-    public interface IEngine<TSettings> : IEngine where TSettings : IProfile
+    public interface IEngine<TSettings> : IEngine
     {
         new IGenerator<TSettings> Generator { get; }
         new ISettingsManager<TSettings> SettingsManager { get; }
