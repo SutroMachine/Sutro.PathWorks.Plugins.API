@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace Sutro.PathWorks.Plugins.API.Settings
 {
-    public interface IProfileManager<TSettings, TProfile> where TProfile : IProfile<TSettings>
+    public interface IProfileManager<TProfile> where TProfile : IProfile
     {
-        List<IProfile<TSettings>> FactoryProfiles { get; }
+        List<TProfile> FactoryProfiles { get; }
 
-        void ApplyJSON(IProfile<TSettings> settings, string json);
-        void ApplyKeyValuePair(IProfile<TSettings> settings, string keyValue);
+        void ApplyJSON(TProfile settings, string json);
+        void ApplyKeyValuePair(TProfile settings, string keyValue);
 
-        IProfile<TSettings> DeserializeJSON(string json);
-        string SerializeJSON(IProfile<TSettings> settings);
+        TProfile DeserializeJSON(string json);
+        string SerializeJSON(TProfile settings);
 
         IUserSettingCollection<TProfile> UserSettings { get; }
     }

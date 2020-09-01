@@ -20,6 +20,5 @@ namespace Sutro.PathWorks.Plugins.API.Engines
     public interface IEngine<TSettings> : IEngine
     {
         new IGenerator<TSettings> Generator { get; }
-        new ISettingsManager<TSettings> SettingsManager { get; }
     }
 }
