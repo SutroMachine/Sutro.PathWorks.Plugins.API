@@ -6,10 +6,10 @@ namespace Sutro.PathWorks.Plugins.API.Settings
     {
         IPrintProfile CreateSettingsInstance();
 
-        IProfileManager<IMachineProfile> MachineProfileManager { get; }
+        IMachineProfileManager MachineProfileManager { get; }
 
-        IProfileManager<IMaterialProfile> MaterialProfileManager { get; }
+        IMaterialProfileManager MaterialProfileManager { get; }
 
-        IProfileManager<IPartProfile> PartProfileManager { get; }
+        IPartProfileManager PartProfileManager { get; }
     }
 }
