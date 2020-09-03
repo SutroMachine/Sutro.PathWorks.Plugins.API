@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Sutro.Core.Models.Profiles;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Sutro.PathWorks.Plugins.API.Settings
@@ -26,18 +27,5 @@ namespace Sutro.PathWorks.Plugins.API.Settings
                         IEnumerable<UserSettingBase> userSettings);
 
         void SetCulture(CultureInfo cultureInfo);
-    }
-
-    public interface IUserSettingCollection<TSettings> : IUserSettingCollection
-    {
-        new IEnumerable<UserSettingBase<TSettings>> Settings();
-
-        List<ValidationResult> Validate(TSettings rawSettings);
-
-        void LoadFromRaw(TSettings rawSettings,
-                         IEnumerable<UserSettingBase<TSettings>> userSettings);
-
-        void ApplyToRaw(TSettings rawSettings,
-                        IEnumerable<UserSettingBase<TSettings>> userSettings);
     }
 }

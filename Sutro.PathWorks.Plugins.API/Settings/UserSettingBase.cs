@@ -22,6 +22,8 @@ namespace Sutro.PathWorks.Plugins.API.Settings
         public abstract void SetToRaw(object settings, object value);
 
         public abstract ValidationResult Validation { get; }
+        // Can be used to hide settings in inherited UserSettingsCollection classes
+        public bool Hidden { get; set; } = false;
 
         public abstract ValidationResult Validate(object value);
 
