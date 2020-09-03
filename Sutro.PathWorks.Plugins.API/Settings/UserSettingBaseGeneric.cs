@@ -4,9 +4,6 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public abstract class UserSettingBase<TProfile> : UserSettingBase
     {
-        // Can be used to hide settings in inherited UserSettingsCollection classes
-        public bool Hidden { get; set; } = false;
-
         protected UserSettingBase(string id,
             Func<string> nameF,
             Func<string> descriptionF = null,
