@@ -3,6 +3,7 @@ using Sutro.Core.Models.GCode;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace Sutro.PathWorks.Plugins.API
 {
@@ -12,7 +13,8 @@ namespace Sutro.PathWorks.Plugins.API
                                 object globalSettings,
                                 out IEnumerable<string> generationReport,
                                 Action<string> gcodeLineReadyF = null,
-                                Action<string> progressMessageF = null);
+                                Action<string> progressMessageF = null, 
+                                CancellationToken? cancelationToken = null);
 
         void SaveGCode(TextWriter output, GCodeFile file);
 
@@ -30,6 +32,7 @@ namespace Sutro.PathWorks.Plugins.API
                                 TSettings globalSettings,
                                 out IEnumerable<string> generationReport,
                                 Action<string> gcodeLineReadyF = null,
-                                Action<string> progressMessageF = null);
+                                Action<string> progressMessageF = null,
+                                CancellationToken? cancelationToken = null);
     }
 }
