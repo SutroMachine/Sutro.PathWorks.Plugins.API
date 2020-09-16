@@ -8,13 +8,17 @@ namespace Sutro.PathWorks.Plugins.API.Settings
         private readonly Func<string> descriptionF;
         private readonly Func<string> unitsF;
 
-        public string Name => nameF();
+        public string Name => nameF?.Invoke();
         public string Id { get; }
-        public string Description => descriptionF();
+        public string Description => descriptionF?.Invoke();
 
-        public string Units => unitsF();
+        public string Units => unitsF?.Invoke();
 
-        public virtual string Range { get; } = null;
+        public virtual string RangeText { get; }
+
+        public virtual string RangeMin { get; }
+
+        public virtual string RangeMax { get; }
 
         public UserSettingGroup Group { get; }
 
