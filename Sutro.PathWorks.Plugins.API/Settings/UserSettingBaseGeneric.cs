@@ -7,7 +7,8 @@ namespace Sutro.PathWorks.Plugins.API.Settings
         protected UserSettingBase(string id,
             Func<string> nameF,
             Func<string> descriptionF = null,
-            UserSettingGroup group = null) : base(id, nameF, descriptionF, group)
+            UserSettingGroup group = null,
+            Func<string> unitsF = null) : base(id, nameF, descriptionF, group, unitsF)
         {
         }
 

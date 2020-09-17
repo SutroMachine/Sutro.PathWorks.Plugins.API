@@ -6,10 +6,19 @@ namespace Sutro.PathWorks.Plugins.API.Settings
     {
         private readonly Func<string> nameF;
         private readonly Func<string> descriptionF;
+        private readonly Func<string> unitsF;
 
-        public string Name => nameF();
+        public string Name => nameF?.Invoke();
         public string Id { get; }
-        public string Description => descriptionF();
+        public string Description => descriptionF?.Invoke();
+
+        public string Units => unitsF?.Invoke();
+
+        public virtual string RangeText { get; }
+
+        public virtual string RangeMin { get; }
+
+        public virtual string RangeMax { get; }
 
         public UserSettingGroup Group { get; }
 
@@ -27,10 +36,14 @@ namespace Sutro.PathWorks.Plugins.API.Settings
 
         public abstract ValidationResult Validate(object value);
 
-        protected UserSettingBase(string id, Func<string> nameF, Func<string> descriptionF = null, UserSettingGroup group = null)
+        protected UserSettingBase(string id, Func<string> nameF, 
+            Func<string> descriptionF = null, 
+            UserSettingGroup group = null,
+            Func<string> unitsF = null)
         {
             this.nameF = nameF;
             this.descriptionF = descriptionF;
+            this.unitsF = unitsF;
             Group = group;
             Id = id;
         }
