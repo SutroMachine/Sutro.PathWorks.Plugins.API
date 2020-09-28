@@ -1,4 +1,6 @@
-﻿namespace Sutro.PathWorks.Plugins.API.Visualizers
+﻿using System.Drawing;
+
+namespace Sutro.PathWorks.Plugins.API.Visualizers
 {
     public interface IVisualizerCustomDataDetails
     {
@@ -7,5 +9,7 @@
         float RangeMax { get; }
 
         string FormatColorScaleLabel(float value);
+
+        ColorSpectrum GetSpectrum() => null;
     }
 }
