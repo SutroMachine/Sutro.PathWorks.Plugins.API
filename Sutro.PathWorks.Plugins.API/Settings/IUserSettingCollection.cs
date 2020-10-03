@@ -16,15 +16,15 @@ namespace Sutro.PathWorks.Plugins.API.Settings
     /// </remarks>
     public interface IUserSettingCollection
     {
-        IEnumerable<UserSettingBase> Settings();
+        IEnumerable<IUserSetting> Settings();
 
         List<ValidationResult> Validate(object rawSettings);
 
         void LoadFromRaw(object rawSettings,
-                         IEnumerable<UserSettingBase> userSettings);
+                         IEnumerable<IUserSetting> userSettings);
 
         void ApplyToRaw(object rawSettings,
-                        IEnumerable<UserSettingBase> userSettings);
+                        IEnumerable<IUserSetting> userSettings);
 
         void SetCulture(CultureInfo cultureInfo);
     }
