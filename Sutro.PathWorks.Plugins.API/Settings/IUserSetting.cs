@@ -6,7 +6,8 @@
         string Id { get; }
         string Description { get; }
         string Units { get; }
-        bool Hidden { get; set; }
+        bool Hidden { get; }
+        IUserSettingGroup Group { get; }
 
         void ApplyToRaw(object settings);
 

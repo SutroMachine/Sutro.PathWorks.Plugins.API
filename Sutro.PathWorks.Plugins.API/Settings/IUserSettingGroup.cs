@@ -2,7 +2,7 @@
 
 namespace Sutro.PathWorks.Plugins.API.Settings
 {
-    public interface IUserSetttingGroup
+    public interface IUserSettingGroup
     {
         string Name { get; }
     }

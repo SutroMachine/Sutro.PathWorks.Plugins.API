@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Sutro.PathWorks.Plugins.API.Visualizers
+﻿namespace Sutro.PathWorks.Plugins.API.Visualizers
 {
     public interface IVisualizerCustomDataDetails
     {
