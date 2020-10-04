@@ -3,5 +3,8 @@
     public interface IUserSettingInt : IUserSettingGeneric<int>
     {
         NumericInfoInt NumericInfo { get; }
+
+        ValidationResult Validate();
+
     }
 }
