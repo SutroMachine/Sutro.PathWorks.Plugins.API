@@ -1,4 +1,6 @@
-﻿namespace Sutro.PathWorks.Plugins.API.Settings
+﻿using Sutro.Core.Models.Profiles;
+
+namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public interface IUserSetting
     {
@@ -9,8 +11,10 @@
         bool Hidden { get; }
         IUserSettingGroup Group { get; }
 
-        void ApplyToRaw(object settings);
+        void ApplyToRaw<T>(T profile) where T : IProfile;
 
-        void LoadFromRaw(object settings);
+        void LoadFromRaw<T>(T profile) where T : IProfile;
+
+        void LoadAndApply<T>(T targetProfile, T sourceProfile) where T : IProfile;
     }
 }
