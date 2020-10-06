@@ -10,5 +10,7 @@
         bool ConvertToPercentage { get; }
 
         ValidationResult Validate();
+
+        int DecimalDigits { get; }
     }
 }
