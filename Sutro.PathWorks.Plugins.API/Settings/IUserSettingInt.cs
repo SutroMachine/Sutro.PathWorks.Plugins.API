@@ -5,6 +5,5 @@
         NumericInfoInt NumericInfo { get; }
 
         ValidationResult Validate();
-
     }
 }

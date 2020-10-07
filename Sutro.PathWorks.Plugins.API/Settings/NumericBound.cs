@@ -3,7 +3,7 @@
     public class NumericBound<T>
     {
         public T Value { get; set; }
-        
+
         public bool Inclusive { get; set; }
 
         public NumericBound(T value, bool inclusive)

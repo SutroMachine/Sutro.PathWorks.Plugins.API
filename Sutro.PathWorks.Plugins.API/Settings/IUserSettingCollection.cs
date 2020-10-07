@@ -1,5 +1,4 @@
-﻿using Sutro.Core.Models.Profiles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 
 namespace Sutro.PathWorks.Plugins.API.Settings

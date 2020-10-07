@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace Sutro.PathWorks.Plugins.API.Settings
+﻿namespace Sutro.PathWorks.Plugins.API.Settings
 {
     public interface IUserSettingString : IUserSettingGeneric<string>
     {
