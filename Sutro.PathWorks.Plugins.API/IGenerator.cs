@@ -13,7 +13,7 @@ namespace Sutro.PathWorks.Plugins.API
                                 object globalSettings,
                                 out IEnumerable<string> generationReport,
                                 Action<string> gcodeLineReadyF = null,
-                                Action<string> progressMessageF = null, 
+                                Action<string> progressMessageF = null,
                                 CancellationToken? cancelationToken = null);
 
         void SaveGCode(TextWriter output, GCodeFile file);
