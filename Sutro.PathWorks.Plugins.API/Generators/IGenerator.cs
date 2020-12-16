@@ -7,14 +7,11 @@ using System.Threading;
 
 namespace Sutro.PathWorks.Plugins.API.Generators
 {
-    public delegate bool WarningHandler(string warning);
-
     public interface IGenerator
     {
         GenerationResultBase GenerateGCode(
             IList<Tuple<DMesh3, object>> parts,
             object globalSettings,
-            WarningHandler warningHandler = null,
             CancellationToken? cancellationToken = null);
 
         void SaveGCode(TextWriter output, GCodeFile file);
@@ -32,7 +29,6 @@ namespace Sutro.PathWorks.Plugins.API.Generators
         GenerationResultBase GenerateGCode(
             IList<Tuple<DMesh3, TSettings>> parts,
             TSettings globalSettings,
-            WarningHandler warningHandler = null,
             CancellationToken? cancellationToken = null);
     }
 }
