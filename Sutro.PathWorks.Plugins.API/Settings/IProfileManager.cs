@@ -7,11 +7,11 @@ namespace Sutro.PathWorks.Plugins.API.Settings
     {
         List<TProfile> FactoryProfiles { get; }
 
-        void ApplyJSON(TProfile settings, string json);
+        Result ApplyJSON(TProfile settings, string json);
 
         void ApplyKeyValuePair(TProfile settings, string keyValue);
 
-        TProfile DeserializeJSON(string json);
+        Result<TProfile> DeserializeJSON(string json);
 
         string SerializeJSON(TProfile settings);
 

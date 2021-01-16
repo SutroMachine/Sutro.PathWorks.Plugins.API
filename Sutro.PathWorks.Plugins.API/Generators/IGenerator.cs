@@ -9,7 +9,7 @@ namespace Sutro.PathWorks.Plugins.API.Generators
 {
     public interface IGenerator
     {
-        GenerationResultBase GenerateGCode(
+        Result<GenerationOutput> GenerateGCode(
             IList<Tuple<DMesh3, object>> parts,
             object globalSettings,
             CancellationToken? cancellationToken = null);
@@ -26,7 +26,7 @@ namespace Sutro.PathWorks.Plugins.API.Generators
 
     public interface IGenerator<TSettings> : IGenerator
     {
-        GenerationResultBase GenerateGCode(
+        Result<GenerationOutput> GenerateGCode(
             IList<Tuple<DMesh3, TSettings>> parts,
             TSettings globalSettings,
             CancellationToken? cancellationToken = null);
