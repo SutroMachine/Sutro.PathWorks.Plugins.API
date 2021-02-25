@@ -1,4 +1,5 @@
-﻿using Sutro.PathWorks.Plugins.API.Settings;
+﻿using Sutro.PathWorks.Plugins.API.Generators;
+using Sutro.PathWorks.Plugins.API.Settings;
 using Sutro.PathWorks.Plugins.API.Visualizers;
 using System.Collections.Generic;
 
